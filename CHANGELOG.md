@@ -5,3 +5,4 @@
 - add changelog, first tag and Github release
 - add first 7 animations
 - adjust color patterns
+- update all packages

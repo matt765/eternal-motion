@@ -18,6 +18,7 @@ export const useClothSwing = (
       Composites,
       Mouse,
       MouseConstraint,
+      Events,
     } = Matter;
 
     const currentEngine = engineRef.current;
@@ -100,15 +101,21 @@ export const useClothSwing = (
       cloth.bodies[i].isStatic = true;
     }
 
+    const circle = Bodies.circle(320, 442, 56, {
+      isStatic: false,
+      render: { fillStyle: "#87CEEB" },
+    });
+    const rectangle = Bodies.rectangle(480, 442, 56, 56, {
+      isStatic: false,
+      render: { fillStyle: "#5F9EA0" },
+    });
+
+    circle.isStatic = true;
+    rectangle.isStatic = true;
+
     const obstacles = [
-      Bodies.circle(320, 442, 56, {
-        isStatic: true,
-        render: { fillStyle: "#87CEEB" },
-      }),
-      Bodies.rectangle(480, 442, 56, 56, {
-        isStatic: true,
-        render: { fillStyle: "#5F9EA0" },
-      }),
+      circle,
+      rectangle,
       Bodies.rectangle(400, sceneElement.clientHeight - 25, 800, 50, {
         isStatic: true,
         render: { fillStyle: "#060a19" },
@@ -130,6 +137,20 @@ export const useClothSwing = (
 
     Composite.add(world, mouseConstraint);
     render.mouse = mouse;
+
+    Events.on(mouseConstraint, "startdrag", function (event) {
+      if (event.body === circle || event.body === rectangle) {
+        Body.setStatic(event.body, false);
+      }
+    });
+
+    Events.on(mouseConstraint, "enddrag", function (event) {
+      if (event.body === circle || event.body === rectangle) {
+        Body.setStatic(event.body, true);
+        Body.setVelocity(event.body, { x: 0, y: 0 });
+        Body.setAngularVelocity(event.body, 0);
+      }
+    });
 
     Render.run(render);
     const runner = runnerRef.current;

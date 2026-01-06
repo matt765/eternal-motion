@@ -25,7 +25,7 @@ const CONFIG = {
 
   // Jądro
   protonColor: "#00d4ff",
-  neutronColor: "#2563eb",
+  neutronColor: "#3b82f6",
   nucleonBaseRadius: 0.2,
   nucleonDetail: 32,
   nucleusScaleFactor: 0.9,

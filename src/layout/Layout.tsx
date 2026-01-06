@@ -1,19 +1,26 @@
-import { ReactNode } from 'react'
+'use client'
+import { ReactNode, useEffect, useState } from 'react'
 import styles from './styles/Layout.module.scss' // Main layout styles
 import { ThemeToggle } from './components/themeToggle/ThemeToggle'
 import { SideMenu } from './components/sideMenu/SideMenu'
 import { MobileNavbar } from './components/sideMenu/SideMenuMobile'
 import useLayout from './useLayout'
-import { Loader } from '../components/loader/Loader' // Refactored Loader
+import { Loader } from '../components/loader/Loader'
 
 export const Layout = ({ children }: { children: ReactNode }) => {
+  const [isLoading, setIsLoading] = useState(true)
   const {
     isFullScreen,
     isSideMenuOpen,
     colorMode, // 'light' or 'dark' from useLayout (next-themes)
-    isLoading, // App loading state from useLayout
     handleSideMenu,
   } = useLayout()
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 700)
+  }, [])
 
   const getThemeSpecificClass = () => {
     switch (colorMode) {
@@ -35,7 +42,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     getThemeSpecificClass(),
     // Nota: globalna klasa light/dark/ocean/sunset jest aplikowana na <html> przez next-themes
   ].join(' ').trim()
-  
+
   const contentWrapperClasses = [
     styles.contentWrapper,
     isFullScreen ? styles.fullScreenContent : '', // Optional: if content needs to change in fullscreen
@@ -43,7 +50,16 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
   if (isLoading) {
     return (
-      <div className={styles.loadingOverlay}> {/* Optional: for a full page loader style */}
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "var(--spinner-bg)",
+        }}
+      >
         <Loader size="xl" />
       </div>
     )
@@ -60,7 +76,6 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <div className={styles.overlay}></div>
         <main className={contentWrapperClasses}> {/* Changed Flex to main for semantics */}
           <div className={styles.contentBox}>
-            {/* isLoading check is now at the top for the whole layout */}
             {children}
           </div>
         </main>

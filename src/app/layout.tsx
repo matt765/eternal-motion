@@ -1,8 +1,5 @@
-"use client";
-import Head from "next/head"; // Keep for now, might need to be replaced with Metadata API
-import { useEffect, useState, ReactNode } from "react"; // Removed createContext
-import { motion } from "framer-motion";
-// QueryClient and QueryClientProvider removed, will be in Providers.tsx
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 import "@fontsource/poppins";
 import "@fontsource/dm-sans";
@@ -23,56 +20,24 @@ import "@fontsource/quicksand/500.css";
 import "@fontsource/quicksand/400.css";
 import "@fontsource/quicksand/300.css";
 import "../styles/globals.css";
-import "../styles/theme-light.scss"; // Changed to scss
-import "../styles/theme-dark.scss"; // Changed to scss
-import "../styles/theme-sunset.scss"; // Changed to scss
-import "../styles/theme-ocean.scss"; // Changed to scss
-import { Providers } from "../services/Providers"; // Added Providers
-import { Layout } from "../layout/Layout"; // Corrected Layout import
+import "../styles/theme-light.scss";
+import "../styles/theme-dark.scss";
+import "../styles/theme-sunset.scss";
+import "../styles/theme-ocean.scss";
+import { Providers } from "../services/Providers";
+import { Layout } from "../layout/Layout";
+
+export const metadata: Metadata = {
+  title: "Eternal Motion",
+  description: "Physics simulations and interactive animations",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 700);
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <title>Eternal Motion</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </Head>
       <body>
         <Providers>
-          {isLoading ? (
-            <div
-              style={{
-                width: "100%",
-                height: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "var(--spinner-bg)",
-              }}
-            >
-              <div>Loading...</div>
-            </div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              style={{
-                height: "100%",
-                overflow: "hidden",
-              }}
-            >
-              <Layout>{children}</Layout>
-            </motion.div>
-          )}
+          <Layout>{children}</Layout>
         </Providers>
       </body>
     </html>

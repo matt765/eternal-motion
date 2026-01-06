@@ -107,4 +107,7 @@ html.dark {
   --switch-bg: rgba(255, 255, 255, 0.2);
   --switch-checked-bg: var(--colored-text-light);
   --badge-bg: var(--secondary-bg);
+
+  // Refresh button
+  --refresh-button-bg: var(--spinner-bg);
 }

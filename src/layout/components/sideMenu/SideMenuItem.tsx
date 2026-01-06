@@ -20,7 +20,10 @@ export const SideMenuItem = ({
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (pathname === path) {
+    // Special case: "/" should highlight the Spinner menu item
+    if (pathname === "/" && path === "/spinner") {
+      setIsActive(true);
+    } else if (pathname === path) {
       setIsActive(true);
     } else {
       setIsActive(false);

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import { OrbitControls, Stars, shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./SolarSystem.module.scss";
 import { useSolarSystem, PlanetConfig, COLORS } from "./useSolarSystem";
+import { RefreshIcon } from "../../../assets/icons/RefreshIcon";
 
 const JupiterStripesMaterial = shaderMaterial(
   {
@@ -239,7 +240,7 @@ export const AsteroidBelt = ({
   );
 };
 
-export const SolarSystem = () => {
+const SolarSystemScene = ({ resetKey }: { resetKey: number }) => {
   const { sliderValue, setSliderValue, speedMultiplier, planetData } =
     useSolarSystem();
 
@@ -301,6 +302,23 @@ export const SolarSystem = () => {
           onChange={(e) => setSliderValue(Number(e.target.value))}
         />
       </div>
+    </div>
+  );
+};
+
+export const SolarSystem = () => {
+  const [resetKey, setResetKey] = useState(0);
+
+  const handleReset = () => {
+    setResetKey((prevKey) => prevKey + 1);
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <button onClick={handleReset} className={styles.resetButton}>
+        <RefreshIcon fill="white" />
+      </button>
+      <SolarSystemScene key={resetKey} resetKey={resetKey} />
     </div>
   );
 };

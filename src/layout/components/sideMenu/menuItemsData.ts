@@ -5,6 +5,7 @@ import { GridIcon } from "../../../assets/icons/GridIcon";
 import { WreckingBallIcon } from "../../../assets/icons/WreckingBallIcon";
 import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
 import { SlingshotIcon } from "../../../assets/icons/SlingshotIcon";
+import { AtomIcon } from "../../../assets/icons/AtomIcon";
 
 export const menuItems = [
   {
@@ -13,14 +14,9 @@ export const menuItems = [
     path: "/spinner",
   },
   {
-    title: "Solar System",
-    icon: PlanetIcon,
-    path: "/solar-system",
-  },
-  {
-    title: "Cloth Swing",
-    icon: GridIcon,
-    path: "/cloth-swing",
+    title: "Wrecking Ball",
+    icon: WreckingBallIcon,
+    path: "/wrecking-ball",
   },
   {
     title: "Slingshot",
@@ -28,17 +24,22 @@ export const menuItems = [
     path: "/slingshot",
   },
   {
+    title: "Cloth Swing",
+    icon: GridIcon,
+    path: "/cloth-swing",
+  },
+  {
     title: "Atom Model",
-    icon: ColorPickerIcon,
+    icon: AtomIcon,
     path: "/atom-model",
   },
   {
-    title: "Wrecking Ball",
-    icon: WreckingBallIcon,
-    path: "/wrecking-ball",
+    title: "Solar System",
+    icon: PlanetIcon,
+    path: "/solar-system",
   },
   {
-    title: "Newton's Crade",
+    title: "Newton's Cradle",
     icon: NewtonsCradleIcon,
     path: "/newtons-cradle",
   },

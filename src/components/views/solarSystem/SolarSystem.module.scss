@@ -38,3 +38,29 @@
 .controls input[type="range"] {
   width: 300px;
 }
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.resetButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  background: var(--refresh-button-bg);
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: rgba(60, 60, 60, 0.9);
+  }
+}

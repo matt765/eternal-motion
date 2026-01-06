@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./AtomModel.module.scss";
 import { useAtomModel } from "./useAtomModel";
+import { RefreshIcon } from "../../../assets/icons/RefreshIcon";
 
 // --- GŁÓWNA KONFIGURACJA MODELU ---
 const CONFIG = {
@@ -192,7 +193,7 @@ const OrbitRing = ({ radius }: { radius: number }) => (
   </mesh>
 );
 
-export const AtomModel = () => {
+const AtomModelScene = () => {
   const { element, sliderValue } = useAtomModel();
   const speedMultiplier = (sliderValue / CONFIG.sliderMidpoint) ** 2;
 
@@ -251,6 +252,23 @@ export const AtomModel = () => {
           <OrbitControls enableZoom enablePan />
         </Canvas>
       </div>
+    </div>
+  );
+};
+
+export const AtomModel = () => {
+  const [resetKey, setResetKey] = useState(0);
+
+  const handleReset = () => {
+    setResetKey((prevKey) => prevKey + 1);
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <button onClick={handleReset} className={styles.resetButton}>
+        <RefreshIcon fill="white" />
+      </button>
+      <AtomModelScene key={resetKey} />
     </div>
   );
 };

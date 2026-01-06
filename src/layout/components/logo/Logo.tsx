@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 
 import styles from "../../styles/Logo.module.scss";
 import { LogoIcon } from "../../../assets/icons/LogoIcon";
@@ -16,7 +17,7 @@ export const Logo = ({ isSideMenuOpen, isMobile }: Props) => {
   ].join(" ");
 
   return (
-    <div className={containerClasses}>
+    <Link href="/" className={containerClasses}>
       <div style={{ display: "flex", alignItems: "center" }}>
         {/* Inner flex container for image and text */}
         <div className={styles.imageContainer}>
@@ -29,6 +30,6 @@ export const Logo = ({ isSideMenuOpen, isMobile }: Props) => {
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 };

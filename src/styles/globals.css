@@ -8,11 +8,13 @@ body {
 
 #__next {
   height: 100%;
-  overflow: 'hidden'
+  overflow: 'hidden';
+  background-color: var(--page-bg, rgb(28, 36, 56));
 }
 
 #app {
   min-height: 100vh;
+  background-color: var(--page-bg, rgb(28, 36, 56));
 }
 
 a {
@@ -24,9 +26,10 @@ a {
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: 'Jost';
-  background-color: var(--spinner-bg, rgb(28, 36, 56));
+  background-color: var(--page-bg, rgb(28, 36, 56));
 }
 
 * {

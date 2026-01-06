@@ -193,8 +193,7 @@ const OrbitRing = ({ radius }: { radius: number }) => (
 );
 
 export const AtomModel = () => {
-  const { elements, element, sliderValue, setSliderValue, setSelectedElement } =
-    useAtomModel();
+  const { element, sliderValue } = useAtomModel();
   const speedMultiplier = (sliderValue / CONFIG.sliderMidpoint) ** 2;
 
   const shellDistances = useMemo(

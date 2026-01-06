@@ -1,7 +1,4 @@
 import { ColorPickerIcon } from "../../../assets/icons/ColorPickerIcon";
-import { HealthIcon } from "../../../assets/icons/HealthIcon";
-import { TicTacToeIcon } from "../../../assets/icons/TicTacToeIcon";
-import { CalculatorIcon } from "../../../assets/icons/CalculatorIcon";
 import { PlanetIcon } from "../../../assets/icons/PlanetIcon";
 import { NewtonsCradleIcon } from "../../../assets/icons/NewtonsCradleIcon";
 import { GridIcon } from "../../../assets/icons/GridIcon";

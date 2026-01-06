@@ -138,13 +138,13 @@ export const useClothSwing = (
     Composite.add(world, mouseConstraint);
     render.mouse = mouse;
 
-    Events.on(mouseConstraint, "startdrag", function (event) {
+    Events.on(mouseConstraint, "startdrag", function (event: any) {
       if (event.body === circle || event.body === rectangle) {
         Body.setStatic(event.body, false);
       }
     });
 
-    Events.on(mouseConstraint, "enddrag", function (event) {
+    Events.on(mouseConstraint, "enddrag", function (event: any) {
       if (event.body === circle || event.body === rectangle) {
         Body.setStatic(event.body, true);
         Body.setVelocity(event.body, { x: 0, y: 0 });

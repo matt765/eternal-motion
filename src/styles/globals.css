@@ -1,0 +1,70 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow: 'hidden'
+}
+
+#__next {
+  height: 100%;
+  overflow: 'hidden'
+}
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Jost';
+  background-color: black;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255,255,255,0.1);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(255,255,255,0.1);
+  border-radius: 30px;
+  border: none;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(255,255,255,0.1);
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(255,255,255,0);
+}
+
+:root {
+  scrollbar-color: rgb(255,255,255,0.1) rgb(255,255,255,0.1);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+
+::-webkit-input-placeholder {
+  color: rgb(255,255,255,0.4) !important;
+}
+
+option, optgroup {
+  -webkit-appearance: none !important;
+}
